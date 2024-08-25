@@ -13,9 +13,9 @@ pipelines:
             - apt-get update
             - apt-get install -y jq
             - declare -x VERSION=$(jq -r '.version' package.json)
+            - echo NODE_ENV="production" >> .env
             # todo: If you want to use env variables that you added to bitbucket, you need to register them here
             # Using a Database Password (DB_PASSWORD). Just add this (example): - echo DB_PASSWORD="${DB_PASSWORD}" >> .env
-            # - echo NODE_ENV="stage" >> .env
             # - echo PORT="${PORT}" >> .env
             # - echo DB_CLIENT="${DB_CLIENT}" >> .env
             # - echo DB_HOST="${DB_HOST}" >> .env
@@ -24,13 +24,13 @@ pipelines:
             # - echo DB_USER="${DB_USER}" >> .env
             # - echo JWT_TOKEN_SECRET="${JWT_TOKEN_SECRET}" >> .env
             - echo $VERSION
-            # todo: add your registry - <<registry>>
-            # - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD <<registry>>
-            # - docker build -t "<<registry>>/$BITBUCKET_REPO_SLUG-production:$VERSION"  --build-arg NODE_ENV=production .
+            # todo: add your registry - **registry**
+            # - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD **registry**
+            # - docker build -t "**registry**/$BITBUCKET_REPO_SLUG-production:$VERSION" .
             - git remote -v
             - git push origin --tags
-            # todo: add your registry - <<registry>>
-            # - docker push "<<registry>>/$BITBUCKET_REPO_SLUG-production:$VERSION"
+            # todo: add your registry - **registry**
+            # - docker push "**registry**/$BITBUCKET_REPO_SLUG-production:$VERSION"
     stage:
       - step:
           deployment: Staging
@@ -43,9 +43,9 @@ pipelines:
             - apt-get update
             - apt-get install -y jq
             - declare -x VERSION=$(jq -r '.version' package.json)
+            - echo NODE_ENV="stage" >> .env
             # todo: If you want to use env variables that you added to bitbucket, you need to register them here
             # Using a Database Password (DB_PASSWORD). Just add this (example): - echo DB_PASSWORD="${DB_PASSWORD}" >> .env
-            # - echo NODE_ENV="stage" >> .env
             # - echo PORT="${PORT}" >> .env
             # - echo DB_CLIENT="${DB_CLIENT}" >> .env
             # - echo DB_HOST="${DB_HOST}" >> .env
@@ -54,11 +54,11 @@ pipelines:
             # - echo DB_USER="${DB_USER}" >> .env
             # - echo JWT_TOKEN_SECRET="${JWT_TOKEN_SECRET}" >> .env
             - echo $VERSION
-            # todo: add your registry - <<registry>>
-            # - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD <<registry>>
-            # - docker build -t "<<registry>>/$BITBUCKET_REPO_SLUG-stage:$VERSION" .
+            # todo: add your registry - **registry**
+            # - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD **registry**
+            # - docker build -t "**registry**/$BITBUCKET_REPO_SLUG-stage:$VERSION" .
             - git tag $VERSION
             - git remote -v
             - git push origin --tags
-            # todo: add your registry - <<registry>>
-            # - docker push "<<registry>>/$BITBUCKET_REPO_SLUG-stage:$VERSION"
+            # todo: add your registry - **registry**
+            # - docker push "**registry**/$BITBUCKET_REPO_SLUG-stage:$VERSION"
