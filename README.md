@@ -108,5 +108,5 @@ Next, you need to create the stage and production branches. And start bitbucket 
 
 Every time you need a new version of a project. You update the version in package.json. And merge it into the production or staging branch. Then the docker image will be knocked down and sent to your server.
 
-My [Github](https://gist.github.com/jbsulli/03df3cdce94ee97937ebda0ffef28287). Glad to collaborate and share experiences!
+My [Github](https://github.com/tungulin). Glad to collaborate and share experiences!
 
