@@ -5,16 +5,16 @@ declare global {
   var DB_PASSWORD: string;
   var DB_DATABASE: string;
 }
+import 'dotenv/config';
 
 import express from 'express';
 import db from 'libs/db';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import 'dotenv/config';
 
 global.ENV = process.env.NODE_ENV || 'development';
 
-import userRoutes from 'routes/user.route';
+import exampleRoutes from 'routes/example.route';
 
 const app = express();
 
@@ -23,9 +23,11 @@ app.use(bodyParser.json());
 //todo: check for production cors
 app.use(cors());
 
-app.use('/user', userRoutes);
+// Your routes
+app.use('/example', exampleRoutes);
 
 const start = async () => {
+  console.log('ENV:', ENV);
   app.listen(process.env.PORT, () => console.info(`Server started on port ${process.env.PORT}`));
 
   if (process.env.DB_HOST) {

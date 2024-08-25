@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { validate, parse, type InitDataParsed } from '@telegram-apps/init-data-node';
 
-const authenticate = (req: any, res: Response, next: NextFunction) => {
+const authenticate = (req: Request, res: Response, next: NextFunction) => {
   // todo: Here you can add your custom authentication
   // Example: JWT - https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs#step-2-authenticating-a-token
 };
