@@ -1,8 +1,19 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
 
-const authenticate = (req: Request, res: Response, next: NextFunction) => {
-  // todo: Here you can add your custom authentication
-  // Example: JWT - https://www.digitalocean.com/community/tutorials/nodejs-jwt-expressjs#step-2-authenticating-a-token
+const authenticate = (req: any, res: Response, next: NextFunction) => {
+  const token = req.header('Authorization');
+  if (!token) return res.status(401).json({ type: 'JWTTokenError', message: 'Access denied' });
+  try {
+    const decoded: any = jwt.verify(token, process.env.JWT_TOKEN_SECRET as string);
+    req.user = decoded.data;
+    next();
+  } catch (error) {
+    return res.status(401).send({
+      type: 'JWTTokenError',
+      message: 'Invalid token',
+    });
+  }
 };
 
 export default authenticate;

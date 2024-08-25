@@ -4,6 +4,15 @@ declare global {
   var DB_USER: string;
   var DB_PASSWORD: string;
   var DB_DATABASE: string;
+
+  namespace Express {
+    interface Request {
+      user: {
+        id: number;
+        username: string;
+      };
+    }
+  }
 }
 import 'dotenv/config';
 
@@ -15,6 +24,7 @@ import cors from 'cors';
 global.ENV = process.env.NODE_ENV || 'development';
 
 import exampleRoutes from 'routes/example.route';
+import userRoutes from 'routes/user.route';
 
 const app = express();
 
@@ -25,6 +35,7 @@ app.use(cors());
 
 // Your routes
 app.use('/example', exampleRoutes);
+app.use('/user', userRoutes);
 
 const start = async () => {
   console.log('ENV:', ENV);

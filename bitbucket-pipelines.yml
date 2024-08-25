@@ -15,13 +15,14 @@ pipelines:
             - declare -x VERSION=$(jq -r '.version' package.json)
             # todo: If you want to use env variables that you added to bitbucket, you need to register them here
             # Using a Database Password (DB_PASSWORD). Just add this (example): - echo DB_PASSWORD="${DB_PASSWORD}" >> .env
-            - echo NODE_ENV="stage" >> .env
-            - echo PORT="${PORT}" >> .env
-            - echo DB_CLIENT="${DB_CLIENT}" >> .env
-            - echo DB_HOST="${DB_HOST}" >> .env
-            - echo DB_PASSWORD="${DB_PASSWORD}" >> .env
-            - echo DB_DATABASE="${DB_DATABASE}" >> .env
-            - echo DB_USER="${DB_USER}" >> .env
+            # - echo NODE_ENV="stage" >> .env
+            # - echo PORT="${PORT}" >> .env
+            # - echo DB_CLIENT="${DB_CLIENT}" >> .env
+            # - echo DB_HOST="${DB_HOST}" >> .env
+            # - echo DB_PASSWORD="${DB_PASSWORD}" >> .env
+            # - echo DB_DATABASE="${DB_DATABASE}" >> .env
+            # - echo DB_USER="${DB_USER}" >> .env
+            # - echo JWT_TOKEN_SECRET="${JWT_TOKEN_SECRET}" >> .env
             - echo $VERSION
             # todo: add your registry - <<registry>>
             # - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD <<registry>>
@@ -44,14 +45,14 @@ pipelines:
             - declare -x VERSION=$(jq -r '.version' package.json)
             # todo: If you want to use env variables that you added to bitbucket, you need to register them here
             # Using a Database Password (DB_PASSWORD). Just add this (example): - echo DB_PASSWORD="${DB_PASSWORD}" >> .env
-            - echo NODE_ENV="stage" >> .env
-            - echo PORT="${PORT}" >> .env
-            - echo DB_CLIENT="${DB_CLIENT}" >> .env
-            - echo DB_HOST="${DB_HOST}" >> .env
-            - echo DB_PASSWORD="${DB_PASSWORD}" >> .env
-            - echo DB_DATABASE="${DB_DATABASE}" >> .env
-            - echo DB_USER="${DB_USER}" >> .env
-            - echo BOT_TOKEN="${BOT_TOKEN}" >> .env
+            # - echo NODE_ENV="stage" >> .env
+            # - echo PORT="${PORT}" >> .env
+            # - echo DB_CLIENT="${DB_CLIENT}" >> .env
+            # - echo DB_HOST="${DB_HOST}" >> .env
+            # - echo DB_PASSWORD="${DB_PASSWORD}" >> .env
+            # - echo DB_DATABASE="${DB_DATABASE}" >> .env
+            # - echo DB_USER="${DB_USER}" >> .env
+            # - echo JWT_TOKEN_SECRET="${JWT_TOKEN_SECRET}" >> .env
             - echo $VERSION
             # todo: add your registry - <<registry>>
             # - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASSWORD <<registry>>
