@@ -105,3 +105,8 @@ Enter your variables from the [bitbucket env](https://support.atlassian.com/bitb
 **Don't forget to uncomment the .env in the .gitignore**
 
 Next, you need to create the stage and production branches. And start bitbucket pipelines. Done! If you have done everything correctly, now your docker images will be sent to your server with different prefixes in the name (stage or production). You can run them and they will use your personal env
+
+Every time you need a new version of a project. You update the version in package.json. And merge it into the production or staging branch. Then the docker image will be knocked down and sent to your server.
+
+My [Github](https://gist.github.com/jbsulli/03df3cdce94ee97937ebda0ffef28287). Glad to collaborate and share experiences!
+
